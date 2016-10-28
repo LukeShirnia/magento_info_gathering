@@ -7,7 +7,7 @@ This then allows you to troubleshoot any potential issue with the store quicker 
 
 
 ----------------------------------------------
-Script will pull in the following information:
+Script will pull in the following information. Below is an example output:
 
 Database
 ------------------
