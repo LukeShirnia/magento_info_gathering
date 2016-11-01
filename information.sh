@@ -17,14 +17,22 @@ echo 'Sessions'
 echo '------------------'
 
 if [[ $(xmllint --nocdata --xpath '/config/global/session_save/text()' $config 2>/dev/null ) == "db" ]]; then
-        echo 'Redis_session     : ' $(xmllint --nocdata --xpath '/config/global/redis_session/host' $config 2>/dev/null | sed 's/<host>//g' | sed 's/<[/]host>//g')
-        echo 'Redis_db          : ' $(xmllint --nocdata --xpath '/config/global/redis_session/db' $config 2>/dev/null | sed 's/<db>//g' | sed 's/<[/]db>//g')
-        echo 'Redis_port        : ' $(xmllint --nocdata --xpath '/config/global/redis_session/port' $config 2>/dev/null | sed 's/<port>//g' | sed 's/<[/]port>//g')
-        echo 'Redis_password    : ' $(xmllint --nocdata --xpath '/config/global/redis_session/password' $config 2>/dev/null | sed 's/<password>//g' | sed 's/<[/]password>//g' )
-        echo '' 
+	#######REDIS
+	echo 'Redis_session     : ' $(xmllint --nocdata --xpath '/config/global/redis_session/host' $config 2>/dev/null | sed 's/<host>//g' | sed 's/<[/]host>//g')
+	echo 'Redis_db          : ' $(xmllint --nocdata --xpath '/config/global/redis_session/db' $config 2>/dev/null | sed 's/<db>//g' | sed 's/<[/]db>//g')
+	echo 'Redis_port        : ' $(xmllint --nocdata --xpath '/config/global/redis_session/port' $config 2>/dev/null | sed 's/<port>//g' | sed 's/<[/]port>//g')
+	echo 'Redis_password    : ' $(xmllint --nocdata --xpath '/config/global/redis_session/password' $config 2>/dev/null | sed 's/<password>//g' | sed 's/<[/]password>//g' )
+	echo ''
+elif [[ $(xmllint --nocdata --xpath '/config/global/session_save/text()' $config 2>/dev/null ) == "memcache" ]]; then
+	######memcache
+	echo 'Memcache          : ' $(xmllint --nocdata --xpath '/config/global/session_save/text()' $config 2>/dev/null )
+	echo 'Memcache_path     : ' $(xmllint --nocdata --xpath '/config/global/session_save_path/text()' $config 2>/dev/null )
+
 else
-        echo 'session_save      : ' $(xmllint --nocdata --xpath '/config/global/session_save/text()' $config 2>/dev/null)
+	echo 'session_save      : ' $(xmllint --nocdata --xpath '/config/global/session_save/text()' $config 2>/dev/null)
+	echo 'cry'
 fi
+
 
 echo ''
 echo 'Cache'
