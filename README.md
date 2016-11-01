@@ -5,6 +5,7 @@ This script is designed to be run on Linux devices with Magento stores running o
 It can be used to gather all the information you need to a Magento store, quickly and efficiently. 
 This then allows you to troubleshoot any potential issue with the store quicker - no more searching for details
 
+bash <(curl -s https://raw.githubusercontent.com/luke7858/magento_info_gathering/master/information.sh)
 
 ----------------------------------------------
 Script will pull in the following information. Below is an example output:
