@@ -30,7 +30,6 @@ elif [[ $(xmllint --nocdata --xpath '/config/global/session_save/text()' $config
 
 else
 	echo 'session_save      : ' $(xmllint --nocdata --xpath '/config/global/session_save/text()' $config 2>/dev/null)
-	echo 'cry'
 fi
 
 
