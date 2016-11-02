@@ -80,6 +80,6 @@ echo $format
 }
 
 
-updatedb
-whichsite
-config
+updatedb #command
+whichsite #function
+config #function
