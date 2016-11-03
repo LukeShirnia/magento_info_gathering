@@ -5,7 +5,6 @@ function xml_info {
 
 echo $config
 echo ""
-#php -r 'include $config_mage; echo "Edition: " . Mage::getEdition() . "\n"; echo "Version: " . Mage::getVersion() . "\n";'
 echo "EDITION: " `php -r "require '"$config_mage"'; echo Mage::getEdition(); "`
 echo "VERSION: " `php -r "require '"$config_mage"'; echo Mage::getVersion(); "`
 
