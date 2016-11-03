@@ -2,14 +2,12 @@
 format='--------------------------------------------------------------------------------------------'
 function xml_info {
 #####Print Edition And Version
-
 echo $config
 echo ""
 echo "EDITION: " `php -r "require '"$config_mage"'; echo Mage::getEdition(); "`
 echo "VERSION: " `php -r "require '"$config_mage"'; echo Mage::getVersion(); "`
 
-
-#####Print Details
+#####Print DB/Session/Caching Details
 echo ''
 echo 'Database'
 echo '------------------'
