@@ -4,8 +4,8 @@ function xml_info {
 #####Print Edition And Version
 echo $config
 echo ""
-echo "EDITION: " `php -r "require '"$config_mage"'; echo Mage::getEdition(); "`
-echo "VERSION: " `php -r "require '"$config_mage"'; echo Mage::getVersion(); "`
+echo "EDITION: " `php -r "require '"$config_mage"'; echo Mage::getEdition(); " 2>/dev/null`
+echo "VERSION: " `php -r "require '"$config_mage"'; echo Mage::getVersion(); " 2>/dev/null`
 
 #####Print DB/Session/Caching Details
 echo ''
