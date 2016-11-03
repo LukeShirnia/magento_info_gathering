@@ -1,9 +1,16 @@
 #!/bin/bash
 format='--------------------------------------------------------------------------------------------'
-
 function xml_info {
-echo ''
+#####Print Edition And Version
+
 echo $config
+echo ""
+#php -r 'include $config_mage; echo "Edition: " . Mage::getEdition() . "\n"; echo "Version: " . Mage::getVersion() . "\n";'
+echo "EDITION: " `php -r "require '"$config_mage"'; echo Mage::getEdition(); "`
+echo "VERSION: " `php -r "require '"$config_mage"'; echo Mage::getVersion(); "`
+
+
+#####Print Details
 echo ''
 echo 'Database'
 echo '------------------'
@@ -50,17 +57,20 @@ number=0
 echo $format
 echo "A - Show config for all sites"
 
+########XML FILE
 for config in $(locate app/etc/local.xml | grep xml$); do
-         sitearray+=($config);  done
-
+        sitearray+=($config);  done
+########MAGE FILE
+for mage_config in $( locate app/etc/local.xml | grep xml$ | sed 's/etc[/]local.xml/Mage.php/g'); do
+        mage_array+=($mage_config); done
+########Print sites
 for i in "${sitearray[@]}"
 do
         echo "$number" - "$i"
         number=$[number+1]
 done
 echo $format
-read -p "Which option would you like to choose? " answer
-#answer=$[answer-1]
+        read -p "Which option would you like to choose? " answer
 echo $format
 }
 function config {
@@ -71,6 +81,7 @@ echo $format
         ;;
 
         [0-9])
+                config_mage=${mage_array[$answer]};
                 config=${sitearray[$answer]}; xml_info
         ;;
         *)
@@ -80,6 +91,6 @@ echo $format
 }
 
 
-updatedb #command
-whichsite #function
-config #function
+updatedb
+whichsite
+config
