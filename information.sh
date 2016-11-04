@@ -67,26 +67,35 @@ do
         number=$[number+1]
 done
 echo $format
-        read -p "Which option would you like to choose? " answer
-echo $format
+#        read -p "Which option would you like to choose? " answer
+#echo $format
 }
 function config {
+while [[ ! ("$answer" =~ ("A|a|exit")$ )]]; do
+        read -p "Which option would you like to choose? " answer
 echo $format
         case $answer in
-        "A" )	#show all information for all magento stores
+        A|a )	#show all information for all magento stores
 		array_counter="0"
 		config_mage=${mage_array[$array_counter]};
                 for config in $(locate app/etc/local.xml | grep xml$); do xml_info; array_counter=$[array_counter+1]; done
+		exit
         ;;
 
         [0-9])  #show information for a specific magento store
                 config_mage=${mage_array[$answer]};
                 config=${sitearray[$answer]}; xml_info
+		exit
         ;;
+	exit|EXIT) 
+		#exit the script
+		exit
+	;;
         *)
                 echo "Invalid response"
         ;;
         esac
+done
 }
 
 
