@@ -72,7 +72,10 @@ echo $format
 #echo $format
 }
 function config {
+	length=$(echo "${#sitearray[@]}")
+	length=$[length-1]
 while [[ ! ("$answer" =~ ("A|a|exit")$ )]]; do
+	echo "$length"
         read -p "Which option would you like to choose? " answer
 echo $format
         case $answer in
@@ -83,7 +86,7 @@ echo $format
 		exit
         ;;
 
-        [0-9])  #show information for a specific magento store
+       	[0-"$length"])  #show information for a specific magento store
                 config_mage=${mage_array[$answer]};
                 config=${sitearray[$answer]}; xml_info
 		exit
