@@ -73,11 +73,13 @@ echo $format
 function config {
 echo $format
         case $answer in
-        "A" )
-                for config in $(locate app/etc/local.xml | grep xml$); do xml_info; done
+        "A" )	#show all information for all magento stores
+		array_counter="0"
+		config_mage=${mage_array[$array_counter]};
+                for config in $(locate app/etc/local.xml | grep xml$); do xml_info; array_counter=$[array_counter+1]; done
         ;;
 
-        [0-9])
+        [0-9])  #show information for a specific magento store
                 config_mage=${mage_array[$answer]};
                 config=${sitearray[$answer]}; xml_info
         ;;
