@@ -75,7 +75,6 @@ function config {
 	length=$(echo "${#sitearray[@]}")
 	length=$[length-1]
 while [[ ! ("$answer" =~ ("A|a|exit")$ )]]; do
-	echo "$length"
         read -p "Which option would you like to choose? " answer
 echo $format
         case $answer in
