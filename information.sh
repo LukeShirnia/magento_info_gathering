@@ -52,6 +52,7 @@ echo $format
 function whichsite {
 number=0
 echo $format
+echo "exit - to quit"
 echo "A - Show config for all sites"
 
 ########XML FILE
