@@ -10,6 +10,11 @@ bash <(curl -s https://raw.githubusercontent.com/luke7858/magento_info_gathering
 ----------------------------------------------
 Script will pull in the following information. Below is an example output:
 
+EDITION:  Enterprise/Community
+
+VERSION:  x.x.x.x
+
+
 Database
 ------------------
 Host              :  localhost
