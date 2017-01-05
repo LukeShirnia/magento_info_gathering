@@ -103,5 +103,6 @@ done
 
 
 updatedb
+echo "Please wait..."
 whichsite
 config
